@@ -8,5 +8,5 @@ global.Notification = {
 
 it("PushButton renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<PushButton />, div);
+  ReactDOM.render(<PushButton publicServerKey="123" />, div);
 });

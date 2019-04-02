@@ -1,6 +1,6 @@
 {
   "name": "react-push-notification-button",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React button to enable/disable the push notifications",
   "main": "build/index.js",
   "scripts": {
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DimiMikadze/create-react-library.git"
+    "url": "git+https://github.com/linconkusunoki/react-push-notification-button.git"
   },
-  "author": "Dimi Mikadze <dimi@udilia.com>",
+  "author": "Lincon Kusunoki",
   "bugs": {
-    "url": "https://github.com/DimiMikadze/create-react-library/issues"
+    "url": "https://github.com/linconkusunoki/react-push-notification-button/issues"
   },
-  "homepage": "https://github.com/DimiMikadze/create-react-library#readme",
+  "homepage": "https://github.com/linconkusunoki/react-push-notification-button",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
