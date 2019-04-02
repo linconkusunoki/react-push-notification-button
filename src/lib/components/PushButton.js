@@ -65,9 +65,10 @@ function subscribeUser(setSubscription, onSubscribe, publicServerKey) {
         userVisibleOnly: true,
         applicationServerKey
       })
-      .then(subscription => {
+      .then(sub => {
         console.log("User is subscribed.");
         new Notification("You have subscribed!");
+        const subscription = JSON.stringify(sub);
         onSubscribe(subscription);
         setSubscription(subscription);
       })
