@@ -1,4 +1,4 @@
-# React push-notification button
+# React push-notification button ![build](https://travis-ci.org/linconkusunoki/react-push-notification-button.svg?branch=master)
 
 After you register a service worker, this button will be able to request the user permission to receive notifications.
 
@@ -19,7 +19,7 @@ $ web-push generate-vapid-keys
 
 ### Component usage
 
-First you will need to install the component by npm or yarn
+First you will need to install using npm
 
 ```
 npm install react-push-notification-button
