@@ -1,3 +1,3 @@
-import PushButton from "./components/PushButton";
+import PushButton from './components/PushButton'
 
-export default PushButton;
+export default PushButton

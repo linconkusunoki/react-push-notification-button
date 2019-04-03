@@ -34,7 +34,7 @@ yarn add react-push-notification-button
 then import the component in your project
 
 ```javascript
-import PushButton from "react-push-notification-button";
+import PushButton from 'react-push-notification-button'
 ```
 
 and use where you need
