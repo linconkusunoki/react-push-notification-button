@@ -5,6 +5,7 @@ const PushButton = ({
   publicServerKey,
   onSubscribe,
   onUnsubscribe,
+  texts,
   ...props
 }) => {
   const [subscription, setSubscription] = useState(null)
@@ -24,14 +25,14 @@ const PushButton = ({
   if (Notification.permission === 'denied') {
     return (
       <button {...props} disabled={true}>
-        Notifications blocked
+        {texts.notifications} {texts.blocked}
       </button>
     )
   }
 
   return (
     <button {...props} onClick={handleClick}>
-      {subscription ? 'Disable' : 'Enable'} Notifications
+      {subscription ? texts.disable : texts.enable} {texts.notifications}
     </button>
   )
 }
@@ -107,6 +108,12 @@ PushButton.propTypes = {
 PushButton.defaultProps = {
   onSubscribe: () => {},
   onUnsubscribe: () => {},
+  texts: {
+    notifications: 'Notifications',
+    enable: 'Enable',
+    disable: 'Disable',
+    blocked: 'Blocked',
+  },
 }
 
 export default PushButton

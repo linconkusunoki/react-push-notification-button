@@ -71,3 +71,4 @@ this is the callback response of `onSubscribe`
 | publicServerKey | VAPID key                                        | string            | required |
 | onSubscribe     | callback function with your subscription as json | callback function |          |
 | onUnsubscribe   | callback function that returns true or false     | callback function |          |
+| texts           | The texts that may appear in button              | object            |          |
