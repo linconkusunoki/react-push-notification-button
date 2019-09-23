@@ -72,3 +72,4 @@ this is the callback response of `onSubscribe`
 | onSubscribe     | callback function with your subscription as json | callback function |          |
 | onUnsubscribe   | callback function that returns true or false     | callback function |          |
 | texts           | The texts that may appear in button              | object            |          |
+| component       | Custom component used insted of default button   | React Component   |          |
