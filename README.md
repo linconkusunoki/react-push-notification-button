@@ -49,6 +49,28 @@ and use where you need
 
 any other props will be passed to `<button>`
 
+If you pass the prop `component` then the default `<button>` will be changed by
+your component:
+
+```jsx
+// Button.js
+function Button() {
+  return <div>custom button</div>
+}
+```
+
+```jsx
+// import and use Button.js as custom component
+<PushButton
+  publicServerKey={YOUR_PUBLIC_SERVER_KEY}
+  onSubscribe={subscription => console.log(subscription)}
+  onUnsubscribe={subscription => console.log(subscription)}
+  component={Button}
+/>
+```
+
+You can check the [demo](src/demo/App.js) for more examples
+
 ### Response
 
 this is the callback response of `onSubscribe`
@@ -70,6 +92,6 @@ this is the callback response of `onSubscribe`
 | --------------- | ------------------------------------------------ | ----------------- | -------- |
 | publicServerKey | VAPID key                                        | string            | required |
 | onSubscribe     | callback function with your subscription as json | callback function |          |
-| onUnsubscribe   | callback function that returns true or false     | callback function |          |
+| onUnsubscribe   | callback function that returns the subscripion   | callback function |          |
 | texts           | The texts that may appear in button              | object            |          |
 | component       | Custom component used insted of default button   | React Component   |          |
