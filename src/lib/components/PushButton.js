@@ -86,7 +86,7 @@ function unsubscribeUser(setSubscription, onUnsubscribe) {
       .getSubscription()
       .then(subscription => {
         if (subscription) {
-          onUnsubscribe(true)
+          onUnsubscribe(subscription)
           return subscription.unsubscribe()
         }
       })
