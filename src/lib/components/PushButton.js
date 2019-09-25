@@ -6,6 +6,8 @@ const PushButton = ({
   onSubscribe,
   onUnsubscribe,
   texts,
+  preview,
+  previewOptions,
   component: Component,
   ...props
 }) => {
@@ -15,7 +17,13 @@ const PushButton = ({
     if (subscription) {
       unsubscribeUser(setSubscription, onUnsubscribe)
     } else {
-      subscribeUser(setSubscription, onSubscribe, publicServerKey)
+      subscribeUser(
+        setSubscription,
+        onSubscribe,
+        publicServerKey,
+        preview,
+        previewOptions
+      )
     }
   }
 
@@ -59,7 +67,13 @@ function checkSubscription(setSubscription) {
   })
 }
 
-function subscribeUser(setSubscription, onSubscribe, publicServerKey) {
+function subscribeUser(
+  setSubscription,
+  onSubscribe,
+  publicServerKey,
+  preview,
+  previewOptions
+) {
   const applicationServerKey = urlB64ToUint8Array(publicServerKey)
   return navigator.serviceWorker.ready.then(registration => {
     registration.pushManager
@@ -68,8 +82,12 @@ function subscribeUser(setSubscription, onSubscribe, publicServerKey) {
         applicationServerKey,
       })
       .then(sub => {
-        console.log('User is subscribed.')
-        new Notification('You have subscribed!')
+        if (preview) {
+          const title = previewOptions.title
+          const options = previewOptions.options
+          new Notification(title, options)
+        }
+
         const subscription = JSON.stringify(sub)
         onSubscribe(subscription)
         setSubscription(subscription)
@@ -95,7 +113,6 @@ function unsubscribeUser(setSubscription, onUnsubscribe) {
         console.log('Error unsubscribing', error)
       })
       .then(() => {
-        console.log('User is unsubscribed.')
         setSubscription(null)
       })
   })
@@ -105,11 +122,23 @@ PushButton.propTypes = {
   publicServerKey: PropTypes.string.isRequired,
   onSubscribe: PropTypes.func,
   onUnsubscribe: PropTypes.func,
+  texts: PropTypes.object,
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  preview: PropTypes.bool,
 }
 
 PushButton.defaultProps = {
   onSubscribe: () => {},
   onUnsubscribe: () => {},
+  preview: false,
+  previewOptions: {
+    title: 'Progressive Web App',
+    options: {
+      icon: 'https://i.ibb.co/SNrJhhL/notification.png',
+      badge: 'https://i.ibb.co/CHF5MMp/badge.png',
+      body: 'Awesome Push Notifications!',
+    },
+  },
   texts: {
     notifications: 'Notifications',
     enable: 'Enable',

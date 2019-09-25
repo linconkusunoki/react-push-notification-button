@@ -69,7 +69,7 @@ function Button() {
 />
 ```
 
-You can check the [demo](src/demo/App.js) for more examples
+You can check the [demo](src/demo/App.js) for more examples or you can see it running in our [Codesandbox](https://codesandbox.io/s/react-push-notification-buttondemo-97lu4)
 
 ### Response
 
@@ -88,10 +88,12 @@ this is the callback response of `onSubscribe`
 
 ### Props
 
-| prop            | description                                      | type              |          |
-| --------------- | ------------------------------------------------ | ----------------- | -------- |
-| publicServerKey | VAPID key                                        | string            | required |
-| onSubscribe     | callback function with your subscription as json | callback function |          |
-| onUnsubscribe   | callback function that returns the subscripion   | callback function |          |
-| texts           | The texts that may appear in button              | object            |          |
-| component       | Custom component used insted of default button   | React Component   |          |
+| prop            | description                                      | type                     |          |
+| --------------- | ------------------------------------------------ | ------------------------ | -------- |
+| publicServerKey | VAPID key                                        | string                   | required |
+| onSubscribe     | callback function with your subscription as json | callback function        |          |
+| onUnsubscribe   | callback function that returns the subscripion   | callback function        |          |
+| texts           | The texts that may appear in button              | object                   |          |
+| component       | Custom component used insted of default button   | React Component          |          |
+| preview         | Shows one notification right after subscription  | boolean                  |          |
+| previewOptions  | The options to customize the preview             | object { title, options} |          |

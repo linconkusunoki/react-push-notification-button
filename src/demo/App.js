@@ -11,11 +11,21 @@ const texts = {
   blocked: 'Bloqueadas',
 }
 
-const style = { border: '2px solid purple', display: 'block', margin: 10 }
+const previewOptions = {
+  title: 'Alert',
+  options: {
+    icon: 'https://i.ibb.co/vdqKGrC/custom-nofitication.png',
+    badge: 'https://i.ibb.co/CHF5MMp/badge.png',
+    body: 'Hurry, Gotham is in danger!',
+  },
+}
+
+const style = { border: '2px solid purple', display: 'block' }
 
 const App = () => (
   <>
     <h1>Push notification button</h1>
+    <hr />
     <h2>Default</h2>
     <PushButton
       publicServerKey={key}
@@ -36,11 +46,30 @@ const App = () => (
       onSubscribe={subscription => console.log(subscription)}
       component={CustomComponent}
     />
+
+    <h2>With custom component and text</h2>
     <PushButton
       publicServerKey={key}
       onSubscribe={subscription => console.log(subscription)}
       component={CustomComponent}
       texts={texts}
+    />
+
+    <h2>With default notification preview</h2>
+    <PushButton
+      publicServerKey={key}
+      onSubscribe={subscription => console.log(subscription)}
+      onUnsubscribe={subscription => console.log(subscription)}
+      preview
+    />
+
+    <h2>With custom notification preview</h2>
+    <PushButton
+      publicServerKey={key}
+      onSubscribe={subscription => console.log(subscription)}
+      onUnsubscribe={subscription => console.log(subscription)}
+      preview
+      previewOptions={previewOptions}
     />
   </>
 )
