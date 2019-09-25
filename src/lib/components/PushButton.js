@@ -84,10 +84,11 @@ function unsubscribeUser(setSubscription, onUnsubscribe) {
   navigator.serviceWorker.ready.then(registration => {
     registration.pushManager
       .getSubscription()
-      .then(subscription => {
-        if (subscription) {
+      .then(sub => {
+        if (sub) {
+          const subscription = JSON.stringify(sub)
           onUnsubscribe(subscription)
-          return subscription.unsubscribe()
+          return sub.unsubscribe()
         }
       })
       .catch(error => {
