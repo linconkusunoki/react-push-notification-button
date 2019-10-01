@@ -33,8 +33,8 @@ const PushButton = ({
   }, [])
 
   useEffect(() => {
-    permissionState(Notification.permission)
-  }, [Notification.permission])
+    permissionState(!!subscription)
+  }, [permissionState, subscription])
 
   if (Notification.permission === 'denied') {
     return (
@@ -116,9 +116,10 @@ function unsubscribeUser(setSubscription, onUnsubscribe) {
         }
       })
       .catch(error => {
+        setSubscription(error)
         console.log('Error unsubscribing', error)
       })
-      .then(() => {
+      .then(res => {
         setSubscription(null)
       })
   })

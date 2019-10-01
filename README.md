@@ -93,7 +93,7 @@ this is the callback response of `onSubscribe`
 | publicServerKey | VAPID key                                         | string                   | required |
 | onSubscribe     | Return the subscription                           | callback function        |          |
 | onUnsubscribe   | Return the subscription                           | callback function        |          |
-| permissionState | Return the browser state (default|granted|denied) | callback function        |          |
+| permissionState | Return the notification state (true|false)        | callback function        |          |
 | texts           | The texts that may appear in button               | object                   |          |
 | component       | Custom component used insted of default button    | React Component          |          |
 | preview         | Shows one notification right after subscription   | boolean                  |          |
