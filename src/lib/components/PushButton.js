@@ -5,6 +5,7 @@ const PushButton = ({
   publicServerKey,
   onSubscribe,
   onUnsubscribe,
+  permissionState,
   texts,
   preview,
   previewOptions,
@@ -30,6 +31,10 @@ const PushButton = ({
   useEffect(() => {
     checkSubscription(setSubscription)
   }, [])
+
+  useEffect(() => {
+    permissionState(Notification.permission)
+  }, [Notification.permission])
 
   if (Notification.permission === 'denied') {
     return (
@@ -93,6 +98,7 @@ function subscribeUser(
         setSubscription(subscription)
       })
       .catch(error => {
+        setSubscription(error)
         console.log('Failed to subscribe the user: ', error)
       })
   })
@@ -130,6 +136,7 @@ PushButton.propTypes = {
 PushButton.defaultProps = {
   onSubscribe: () => {},
   onUnsubscribe: () => {},
+  permissionState: () => {},
   preview: false,
   previewOptions: {
     title: 'Progressive Web App',

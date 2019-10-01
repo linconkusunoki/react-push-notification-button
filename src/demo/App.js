@@ -71,6 +71,12 @@ const App = () => (
       preview
       previewOptions={previewOptions}
     />
+
+    <h2>Push button state</h2>
+    <PushButton
+      publicServerKey={key}
+      permissionState={state => console.log(state)}
+    />
   </>
 )
 
