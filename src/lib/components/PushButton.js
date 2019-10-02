@@ -36,6 +36,10 @@ const PushButton = ({
     permissionState(!!subscription)
   }, [permissionState, subscription])
 
+  if (!('Notification' in window)) {
+    return null
+  }
+
   if (Notification.permission === 'denied') {
     return (
       <Component {...props} disabled={true}>
@@ -66,9 +70,11 @@ function urlB64ToUint8Array(base64String) {
 
 function checkSubscription(setSubscription) {
   navigator.serviceWorker.ready.then(registration => {
-    registration.pushManager.getSubscription().then(subscription => {
-      if (subscription) setSubscription(subscription)
-    })
+    if (registration.pushManager) {
+      registration.pushManager.getSubscription().then(subscription => {
+        if (subscription) setSubscription(subscription)
+      })
+    }
   })
 }
 
